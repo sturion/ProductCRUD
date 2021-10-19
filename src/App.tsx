@@ -1,8 +1,13 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {getProducts,database, setProducts} from 'firebase'
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  useEffect(() => {
+    setProducts("teste","tenis",450,0);
+    getProducts();
+  }, []);
   return (
     <div className="App">
       <header className="App-header">
