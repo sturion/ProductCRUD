@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { getFirestore, collection, getDocs, getDoc, doc, setDoc , where,query} from 'firebase/firestore';
+import { getFirestore,collection,addDoc,getDocs} from 'firebase/firestore';
 import "firebase/database"
 
 const firebaseConfig = {
@@ -16,19 +16,28 @@ measurementId:process.env.REACT_APP_MID
   const app = initializeApp(firebaseConfig);
 export const database = getFirestore(app);
 
-export const getProducts = async() => {
-  const docRef = doc(database, "products", "productList");
+
+/*export const getProducts = async() => {
+  const docRef = doc(database, "products");
   const docSnap = await getDoc(docRef);
+  console.log(docSnap.data())
   return docSnap.data();
   
-  }
+  }*/
 
-  export const setProducts = async(fotoUrl:string,name:string,price:number,id:number) => {
-    await setDoc(doc(database, "products","productList"), {
+export const getProducts = async() => {
+  const querySnapshot = await getDocs(collection(database, "products"));
+  querySnapshot.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    console.log(doc.id, " => ", doc.data());
+  });
+}
+
+  export const setProducts = async(fotoUrl:string,name:string,price:number) => {
+    await addDoc(collection(database, "products"), {
       fotoUrl: fotoUrl,
       name: name,
       price: price,
-      id: id
     });
   }
-  
+
