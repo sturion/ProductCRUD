@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { setProducts } from 'firebase'
 import { Link } from "react-router-dom";
+import { AiFillHome } from 'react-icons/ai';
 
 import {
     ProductContainer,
@@ -10,6 +11,8 @@ import {
     InputName,
     InputPhoto,
     ProductForm,
+    Title,
+    SubmitButton,
 } from "./styles";
 
 
@@ -21,7 +24,12 @@ const Produtos = () => {
     const handleSubmit = (event: any) => {
         event.preventDefault();
         let priceF = parseFloat(price);
-        setProducts(url,name,priceF);
+        if (price === "" || name === "" || url === ""){
+            alert("campos em branco");
+        }
+        else {
+            setProducts(url,name,priceF);
+        }
     }
 
     return (
@@ -29,21 +37,21 @@ const Produtos = () => {
 
             <ProductContainer>
                 <ProductCard>
+                <LinkDiv>
+                        <Link to="/"><AiFillHome color="grey" size="20px"/></Link>
+                    </LinkDiv>
                     <div>
-                        Cadastro de Produtos
+                        <Title>Cadastro de Produtos</Title>
                     </div>
                     <div>
 
                     </div>
                     <ProductForm onSubmit={handleSubmit}>
-                        <InputName type="text" value={name} onChange={(e) => setName(e.target.value)}></InputName>
-                        <InputPhoto type="text" value={url} onChange={(u) => setUrl(u.target.value)}></InputPhoto>
-                        <InputPrice type="number" value={price} onChange={(v) => setPrice(v.target.value)}></InputPrice>
-                        <button type="submit">Enviar</button>
+                        <label>Nome do produto:</label><InputName type="text" value={name} onChange={(e) => setName(e.target.value)}></InputName>
+                        <label>Url da foto do Produto:</label><InputPhoto type="text" value={url} onChange={(u) => setUrl(u.target.value)}></InputPhoto>
+                        <label>Preço:</label><InputPrice type="number" value={price} onChange={(v) => setPrice(v.target.value)}></InputPrice>
+                        <SubmitButton type="submit">Enviar</SubmitButton>
                     </ProductForm>
-                    <LinkDiv>
-                        <Link to="/">HOME</Link>
-                    </LinkDiv>
                 </ProductCard>
             </ProductContainer>
         </>
