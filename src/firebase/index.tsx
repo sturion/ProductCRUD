@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app'
 import { getFirestore,collection,addDoc,getDocs} from 'firebase/firestore';
 import "firebase/database"
+import { doc, deleteDoc } from "firebase/firestore";
 
 const firebaseConfig = {
 apiKey: process.env.REACT_APP_APIKEY,
@@ -13,24 +14,19 @@ appId: process.env.REACT_APP_APPID,
 measurementId:process.env.REACT_APP_MID
 };
   
-  const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 export const database = getFirestore(app);
-
-
-/*export const getProducts = async() => {
-  const docRef = doc(database, "products");
-  const docSnap = await getDoc(docRef);
-  console.log(docSnap.data())
-  return docSnap.data();
-  
-  }*/
 
 export const getProducts = async() => {
   const querySnapshot = await getDocs(collection(database, "products"));
-  querySnapshot.forEach((doc) => {
-    // doc.data() is never undefined for query doc snapshots
-    console.log(doc.id, " => ", doc.data());
-  });
+  var data : any = [];
+  querySnapshot.forEach((doc)=>{
+    let productData = {
+      id:doc.id,
+      data:doc.data()
+    }
+    data.push(productData)})
+  return data;
 }
 
   export const setProducts = async(fotoUrl:string,name:string,price:number) => {
@@ -40,4 +36,10 @@ export const getProducts = async() => {
       price: price,
     });
   }
+
+
+  export const delProduct = async(id:string) => {
+  await deleteDoc(doc(database, "products", id));
+}
+
 

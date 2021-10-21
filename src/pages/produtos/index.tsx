@@ -3,6 +3,7 @@ import { setProducts } from 'firebase'
 import { Link } from "react-router-dom";
 import { AiFillHome } from 'react-icons/ai';
 
+
 import {
     ProductContainer,
     ProductCard,

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import {app, database} from 'firebase'
+import Repeticao from 'pages/listItems/repeticao'
 export {};
 
 
@@ -18,9 +20,13 @@ const Home = () =>{
             <Link to="/login">LOGIN</Link>
           </li>
           <li>
-            <Link to="/produtos">Produtos</Link>
+            <Link to="/produtos">Produtowads</Link>
+          </li>
+          <li>
+            <Link to="/listItems">daw</Link>
           </li>
         </ul>
+        <Repeticao />
         </div>
         </>
   );

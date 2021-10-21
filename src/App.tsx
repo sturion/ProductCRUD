@@ -1,13 +1,11 @@
-import React, {useEffect} from 'react';
-import {getProducts} from 'firebase'
+import React from 'react';
 import './App.css';
 import Routes from "./routes/routes";
 
+
 function App() {
-  useEffect(() => {
-    getProducts();
-  }, []);
   return (
+    
     <div className="App">
     <div className="Body">
       <Routes/>
