@@ -45,8 +45,10 @@ export const NomeProdutos = styled.div`
     color: black;
 `;
 export const FotoProdutos = styled.img`
-    width: 150px;
-    height: 150px;
+    width: 14vw;
+    height: 14vw;
+    max-width: 150px;
+    max-height: 150px;
     flex-wrap:wrap;
     align-items: center;
     justify-content: center;
@@ -61,7 +63,6 @@ export const PrecoProdutos = styled.div`
     font-weight: 700;
     font-size: 1.8vw;
     color: black;
-    margin-bottom: -20%;
 `;
 export const Ferramentas = styled.div`
     display: flex;
@@ -83,7 +84,7 @@ export const Excluir = styled.button`
         border-radius: 0px 0px 10px 0px;
     }
 `;
-export const Editar = styled.button`
+export const EditarNome = styled.button`
     width:50%;
     height: 100%;
     background-color: rgba(255, 255, 255, 0);
@@ -93,4 +94,44 @@ export const Editar = styled.button`
         border-radius: 0px 0px 0px 10px;
     }
 
+`;
+export const EditarPreco = styled.button`
+    width:50%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.4);
+        border-radius: 0px 0px 0px 0px;
+    }
+
+`;
+export const EditarFoto = styled.button`
+    width:50%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.4);
+        border-radius: 0px 0px 0px 0px;
+    }
+
+`;
+
+export const EditInput = styled.input`
+    background-color: #8A2FF5;
+    border:none;
+    border-bottom : 1px solid rgba(255, 255, 255, 0.8);
+    &::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+    }
+`;
+export const EditAll = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: #8A2FF5;
+    position: relative;
+    width: 100%;
+    border-radius: 0px 0px 10px 10px;
 `;

@@ -18,9 +18,9 @@ import {
 
 
 const Produtos = () => {
-    var [name, setName] = useState("");
     var [url, setUrl] = useState("");
     var [price, setPrice] = useState("");
+    var [name, setName] = useState("");
 
     const handleSubmit = (event: any) => {
         event.preventDefault();

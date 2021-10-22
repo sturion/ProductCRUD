@@ -45,3 +45,14 @@ export const attNameProduct = async(id:string,name:string) => {
 const attProduct = doc(database, "products", id);
 await updateDoc(attProduct, {name: name});
 }
+
+export const attPriceProduct = async(id:string,price:number) => {
+  const attProduct = doc(database, "products", id);
+  await updateDoc(attProduct, {price: price});
+  }
+
+  export const attUrlProduct = async(id:string,url:string) => {
+    const attProduct = doc(database, "products", id);
+    await updateDoc(attProduct, {fotoUrl: url});
+    }
+  

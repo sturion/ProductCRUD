@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {  getProducts, delProduct , attNameProduct} from 'firebase'
+import {  getProducts, delProduct , attNameProduct, attPriceProduct,attUrlProduct} from 'firebase'
 import StardardImage from 'components/images/standard.jpg';
 import { FaTrash,FaEdit } from 'react-icons/fa';
+import { GiPriceTag } from 'react-icons/gi'
+import { MdInsertPhoto } from 'react-icons/md'
 import {
   CardContainer,
   Cards,
@@ -12,10 +14,18 @@ import {
   PrecoProdutos,
   Ferramentas,
   Excluir,
-  Editar
+  EditarNome,
+  EditarPreco,
+  EditarFoto,
+  EditInput,
+  EditAll,
 } from "./styles";
 
 const Repeticao = () => {
+
+  var [name, setName] = useState("");
+
+
 
 const [products, setProducts] = useState<any[]>([]);
 
@@ -42,15 +52,19 @@ const replaceImgWithError = (e:any) => {
       <CardContainer>
       <UlCards>
         {products?.map((product: any)=>{
-        return(<Cards>
+        return(<Cards>          
           <NomeProdutos>{product.data.name}</NomeProdutos>
           <FotoProdutos src={product.data.fotoUrl} onError={replaceImgWithError}/>
           <PrecoProdutos>R${product.data.price}</PrecoProdutos>
+          <EditAll>
+          <EditInput type="text" value={`${name}`} onChange={(e) => setName(e.target.value)} placeholder="Insira a informação"></EditInput>
           <Ferramentas>
-          <Editar onClick={() => attNameProduct(product.id,"rogerin")}><FaEdit color="white" size="2vh"/></Editar>
-          <Excluir onClick={() => delProduct(product.id)}><FaTrash color="white" size="2vh"/></Excluir>
-          
+          <EditarNome onClick={() => attNameProduct(product.id,name)}><FaEdit color="white" size="2vh"/></EditarNome>
+          <EditarPreco onClick={() => attPriceProduct(product.id,parseFloat(name))}><GiPriceTag color="white" size="2vh"/></EditarPreco>
+          <EditarFoto onClick={() => attUrlProduct(product.id,name)}><MdInsertPhoto color="white" size="2vh"/></EditarFoto>
+          <Excluir onClick={() => delProduct(product.id)}><FaTrash color="white" size="2vh"/></Excluir>         
           </Ferramentas>
+          </EditAll>
         </Cards>
         )
         })}
