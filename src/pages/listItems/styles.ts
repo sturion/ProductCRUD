@@ -44,11 +44,13 @@ export const NomeProdutos = styled.div`
     font-size: 1.8vw;
     color: black;
 `;
-export const FotoProdutos = styled.div`
-    max-width: 210px;  
+export const FotoProdutos = styled.img`
+    width: 150px;
+    height: 150px;
     flex-wrap:wrap;
     align-items: center;
     justify-content: center;
+    border-radius: 100%;
 `;
 export const PrecoProdutos = styled.div`
     display: flex;

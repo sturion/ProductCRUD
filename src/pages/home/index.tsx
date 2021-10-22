@@ -10,20 +10,10 @@ const Home = () =>{
       <>
       <div className="LoginPage">
     <div>
-        HOME
     </div>
         <ul>
           <li>
-            <Link to="/">HOME</Link>
-          </li>
-          <li>
-            <Link to="/login">LOGIN</Link>
-          </li>
-          <li>
             <Link to="/produtos">Produtowads</Link>
-          </li>
-          <li>
-            <Link to="/listItems">daw</Link>
           </li>
         </ul>
         <Repeticao />

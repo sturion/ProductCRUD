@@ -1,7 +1,6 @@
 import { initializeApp } from 'firebase/app'
-import { getFirestore,collection,addDoc,getDocs} from 'firebase/firestore';
+import { getFirestore,collection,addDoc,getDocs,updateDoc,deleteDoc, doc} from 'firebase/firestore';
 import "firebase/database"
-import { doc, deleteDoc } from "firebase/firestore";
 
 const firebaseConfig = {
 apiKey: process.env.REACT_APP_APIKEY,
@@ -42,4 +41,7 @@ export const getProducts = async() => {
   await deleteDoc(doc(database, "products", id));
 }
 
-
+export const attNameProduct = async(id:string,name:string) => {
+const attProduct = doc(database, "products", id);
+await updateDoc(attProduct, {name: name});
+}

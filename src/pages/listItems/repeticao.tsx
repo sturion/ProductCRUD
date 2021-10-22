@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {  getProducts, delProduct} from 'firebase'
+import {  getProducts, delProduct , attNameProduct} from 'firebase'
+import StardardImage from 'components/images/standard.jpg';
 import { FaTrash,FaEdit } from 'react-icons/fa';
 import {
   CardContainer,
@@ -30,6 +31,10 @@ useEffect(()=>{
 
 },[])
 
+const replaceImgWithError = (e:any) => {
+  e.target.onerror = null;
+  e.target.src = 'http://placekitten.com/g/300/300';
+};
 
   console.log("products =",products);
   return (
@@ -39,10 +44,10 @@ useEffect(()=>{
         {products?.map((product: any)=>{
         return(<Cards>
           <NomeProdutos>{product.data.name}</NomeProdutos>
-          <FotoProdutos>{product.id}</FotoProdutos>
-          <PrecoProdutos>Preço:{product.data.price}</PrecoProdutos>
+          <FotoProdutos src={product.data.fotoUrl} onError={replaceImgWithError}/>
+          <PrecoProdutos>R${product.data.price}</PrecoProdutos>
           <Ferramentas>
-          <Editar><FaEdit color="white" size="2vh"/></Editar>
+          <Editar onClick={() => attNameProduct(product.id,"rogerin")}><FaEdit color="white" size="2vh"/></Editar>
           <Excluir onClick={() => delProduct(product.id)}><FaTrash color="white" size="2vh"/></Excluir>
           
           </Ferramentas>

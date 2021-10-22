@@ -30,6 +30,7 @@ const Produtos = () => {
         }
         else {
             setProducts(url,name,priceF);
+            price = "";
         }
     }
 
