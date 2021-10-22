@@ -1,21 +1,29 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import {app, database} from 'firebase'
 import Repeticao from 'pages/listItems/repeticao'
-export {};
+import { 
+  ProHead,
+  Title,
+  SearchSystem,
+  AddProd,
+  SearchBar,
+  SubmitButton,
+ } from "./styles";
 
 
 const Home = () =>{
   return (
       <>
       <div className="LoginPage">
-    <div>
-    </div>
-        <ul>
-          <li>
-            <Link to="/produtos">Produtowads</Link>
-          </li>
-        </ul>
+    <ProHead>
+      <Title>Product CRUD</Title>
+    </ProHead>
+    <SearchSystem>    
+    <Link to="/produtos"><AddProd>Adicionar Produtos</AddProd></Link>
+    <SearchBar></SearchBar>
+    <SubmitButton>Submit</SubmitButton>
+    
+    </SearchSystem>
         <Repeticao />
         </div>
         </>
