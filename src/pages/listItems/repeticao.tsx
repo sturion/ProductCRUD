@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {  getProducts, delProduct , attNameProduct, attPriceProduct,attUrlProduct} from 'firebase'
-import StardardImage from 'components/images/standard.jpg';
 import { FaTrash,FaEdit } from 'react-icons/fa';
 import { GiPriceTag } from 'react-icons/gi'
 import { MdInsertPhoto } from 'react-icons/md'
