@@ -5,13 +5,13 @@ import Routes from "./routes/routes";
 
 function App() {
   return (
-    
+
     <div className="App">
-    <div className="Body">
-      <Routes/>
+      <div className="Body">
+        <Routes />
+      </div>
     </div>
-  </div>
-    )
-  };
-  
-  export default App;
+  )
+};
+
+export default App;

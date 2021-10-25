@@ -7,5 +7,5 @@ const Card = () => {
         <div className="Footer">
         </div>
     </div>
-    }
+}
 export default Card;

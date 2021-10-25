@@ -33,7 +33,6 @@ export const LinkDiv = styled.div`
     padding-bottom:30px;
     margin-top:-10px;
     flex-direction: left;
-    self-align: left;
 `;
 
 export const InputPrice = styled.input`

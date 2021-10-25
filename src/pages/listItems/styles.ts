@@ -34,7 +34,7 @@ export const UlCards = styled.ul`
     align-items: center;
     justify-content: center;
 `;
-export const NomeProdutos = styled.div`
+export const ProductName = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap:wrap;
@@ -44,7 +44,7 @@ export const NomeProdutos = styled.div`
     font-size: 1.8vw;
     color: black;
 `;
-export const FotoProdutos = styled.img`
+export const ProductPhoto = styled.img`
     width: 14vw;
     height: 14vw;
     max-width: 150px;
@@ -54,7 +54,7 @@ export const FotoProdutos = styled.img`
     justify-content: center;
     border-radius: 100%;
 `;
-export const PrecoProdutos = styled.div`
+export const ProductPrice = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap:wrap;
@@ -64,7 +64,7 @@ export const PrecoProdutos = styled.div`
     font-size: 1.8vw;
     color: black;
 `;
-export const Ferramentas = styled.div`
+export const Tools = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -74,7 +74,7 @@ export const Ferramentas = styled.div`
     border-radius: 0px 0px 10px 10px;
 
 `;
-export const Excluir = styled.button`
+export const Exclude = styled.button`
     width:50%;
     height: 100%;
     background-color: rgba(255, 255, 255, 0);
@@ -84,7 +84,7 @@ export const Excluir = styled.button`
         border-radius: 0px 0px 10px 0px;
     }
 `;
-export const EditarNome = styled.button`
+export const NameEdit = styled.button`
     width:50%;
     height: 100%;
     background-color: rgba(255, 255, 255, 0);
@@ -95,7 +95,7 @@ export const EditarNome = styled.button`
     }
 
 `;
-export const EditarPreco = styled.button`
+export const EditPrice = styled.button`
     width:50%;
     height: 100%;
     background-color: rgba(255, 255, 255, 0);
@@ -106,7 +106,7 @@ export const EditarPreco = styled.button`
     }
 
 `;
-export const EditarFoto = styled.button`
+export const PhotoEdit = styled.button`
     width:50%;
     height: 100%;
     background-color: rgba(255, 255, 255, 0);
@@ -119,9 +119,15 @@ export const EditarFoto = styled.button`
 `;
 
 export const EditInput = styled.input`
-    background-color: #8A2FF5;
+    width: 80vw;
+    max-width: 800px;
+    height:5vh;
+    max-height: 30px;
     border:none;
-    border-bottom : 1px solid rgba(255, 255, 255, 0.8);
+    background-color: #8A2FF5;
+    margin-top:10px;
+    color: #FFFFFF;
+    border-radius: 10px;
     &::placeholder {
         color: rgba(255, 255, 255, 0.5);
     }
@@ -134,4 +140,8 @@ export const EditAll = styled.div`
     position: relative;
     width: 100%;
     border-radius: 0px 0px 10px 10px;
+`;
+
+export const EditBarDiv = styled.div`
+
 `;

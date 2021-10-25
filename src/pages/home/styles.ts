@@ -13,7 +13,7 @@ export const Title = styled.h1`
 
 `;
 
-export const SearchSystem = styled.div`
+export const SearchSystem = styled.form`
     display: flex;
     justify-content: center;
     align-items: center;

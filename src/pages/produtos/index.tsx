@@ -25,11 +25,11 @@ const Produtos = () => {
     const handleSubmit = (event: any) => {
         event.preventDefault();
         let priceF = parseFloat(price);
-        if (price === "" || name === "" || url === ""){
+        if (price === "" || name === "" || url === "") {
             alert("campos em branco");
         }
         else {
-            setProducts(url,name,priceF);
+            setProducts(url, name, priceF);
             price = "";
         }
     }
@@ -39,8 +39,8 @@ const Produtos = () => {
 
             <ProductContainer>
                 <ProductCard>
-                <LinkDiv>
-                        <Link to="/"><AiFillHome color="grey" size="20px"/></Link>
+                    <LinkDiv>
+                        <Link to="/"><AiFillHome color="grey" size="20px" /></Link>
                     </LinkDiv>
                     <div>
                         <Title>Cadastro de Produtos</Title>
