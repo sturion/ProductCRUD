@@ -18,3 +18,15 @@ Para iniciar, rode o seguinte comando dentro da pasta do projeto:
 ```
 npm start
 ```
+
+## ➕ Como cadastrar um produto
+
+Para adicionar um produto é necessario clicar no símbolo de '+' ao lado da barra de busca, você será redirecionado para a página de cadastro. 
+
+## ❌ Como deletar um produto
+
+Para deletar basta clicar no icone da lata de lixo (🗑️) no produto que deseja deletar.
+
+## ♻️ Como atualizar um produto
+
+Para atualizar um produto coloque a nova innformação na barra de edição e em seguida clique no icone correspondente à informação que deseja alterar.
