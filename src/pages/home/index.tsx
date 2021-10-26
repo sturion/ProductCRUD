@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import Repeat from 'pages/listItems/repeat'
 import { searchBarList } from 'firebase'
+import { BsPlusCircleFill,BsSearch } from "react-icons/bs";
 import {
   ProHead,
   Title,
@@ -26,9 +27,9 @@ const Home = () => {
           <Title>Product CRUD</Title>
         </ProHead>
         <SearchSystem onSubmit={searchSubmit}>
-          <Link to="/produtos"><AddProd>Adicionar Produtos</AddProd></Link>
-          <SearchBar value={name} onChange={(s) => setName(s.target.value)}></SearchBar>
-          <SubmitButton type="submit">Pesquisar!</SubmitButton>
+          <Link to="/produtos"><AddProd><BsPlusCircleFill /></AddProd></Link>
+          <SearchBar value={name} onChange={(s) => setName(s.target.value)} placeholder="Digite para pesquisar"></SearchBar>
+          <SubmitButton type="submit"><BsSearch /></SubmitButton>
 
         </SearchSystem>
         <Repeat />

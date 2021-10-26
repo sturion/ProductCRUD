@@ -28,6 +28,10 @@ export const AddProd = styled.div`
     color: #fff;
     text-decoration: none;
     align-self: auto;
+    display: flex;
+    align-items: center;
+    justify-items:center;
+    padding: 0px 5px 0px 5px;
 `;
 export const SearchBar = styled.input`
     width: 80vw;
