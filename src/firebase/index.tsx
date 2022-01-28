@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { getFirestore, collection, addDoc, getDocs, updateDoc, deleteDoc, doc, query, where } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, getDocs, updateDoc, deleteDoc, doc} from 'firebase/firestore';
 import "firebase/database"
 
 const firebaseConfig = {
@@ -16,8 +16,8 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const database = getFirestore(app);
 
-export const getProducts = async () => {
-  const querySnapshot = await getDocs(collection(database, "products"));
+export const getProducts = async (name: string) => {
+  const querySnapshot = await getDocs(collection(database, name));
   var data: any = [];
   querySnapshot.forEach((doc) => {
     let productData = {
@@ -26,14 +26,16 @@ export const getProducts = async () => {
     }
     data.push(productData)
   })
+  console.log(data);
   return data;
 }
 
-export const setProducts = async (photoUrl: string, name: string, price: number) => {
-  await addDoc(collection(database, "products"), {
-    photoUrl: photoUrl,
-    name: name,
-    price: price,
+export const setProducts = async (question: string, CAnswer: string, WAnswer: string, category: string) => {
+  await addDoc(collection(database, category), {
+    question: question,
+    CAnswer: CAnswer,
+    WAnswer: WAnswer,
+    category: category,
   });
 }
 
@@ -66,13 +68,13 @@ export const attUrlProduct = async (id: string, url: string) => {
   window.location.reload();
 }
 
-export const searchBarList = async (name: string) => {
-  const q = query(collection(database, "products"), where("name", "==", name));
-  const querySnapshot = await getDocs(q);
-  querySnapshot.forEach((doc) => {
-    // doc.data() is never undefined for query doc snapshots
-    console.log("Pesquisa =", doc.id, " => ", doc.data());
-  });
-}
+// export const searchBarList = async (name: string) => {
+//   const q = query(collection(database, name));
+//   const querySnapshot = await getDocs(q);
+//   querySnapshot.forEach((doc) => {
+//     // doc.data() is never undefined for query doc snapshots
+//     console.log("Pesquisa =", doc.id, " => ", doc.data());
+//   });
+// }
 
 

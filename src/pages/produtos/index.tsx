@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { setProducts } from 'firebase'
 import { Link } from "react-router-dom";
 import { AiFillHome } from 'react-icons/ai';
+import Select from "react-select";
+import { categories} from "../../../src/components/data/categories";
 
 
 import {
@@ -18,22 +20,21 @@ import {
 
 
 const Produtos = () => {
-    var [url, setUrl] = useState("");
-    var [price, setPrice] = useState("");
-    var [name, setName] = useState("");
+    var [question, setQuestion] = useState("");
+    var [WAnswer, setWAnswer] = useState("");
+    var [CAnswer, setCAnswer] = useState("");
+    var [category, setCategory] = useState<string|undefined>("");
 
     const handleSubmit = (event: any) => {
         event.preventDefault();
-        let priceF = parseFloat(price);
-        if (price === "" || name === "" || url === "") {
+        if (WAnswer === "" || CAnswer === "" || question === "" || category === "" || !category) {
             alert("campos em branco");
         }
         else {
-            setProducts(url, name, priceF);
-            price = "";
+            setProducts(question, CAnswer, WAnswer, category);
+            WAnswer = "";
         }
     }
-
     return (
         <>
 
@@ -43,15 +44,17 @@ const Produtos = () => {
                         <Link to="/"><AiFillHome color="grey" size="20px" /></Link>
                     </LinkDiv>
                     <div>
-                        <Title>Cadastro de Produtos</Title>
+                        <Title>Cadastro de Perguntas</Title>
                     </div>
                     <div>
 
                     </div>
                     <ProductForm onSubmit={handleSubmit}>
-                        <label>Nome do produto:</label><InputName type="text" value={name} onChange={(e) => setName(e.target.value)}></InputName>
-                        <label>Url da foto do Produto:</label><InputPhoto type="text" value={url} onChange={(u) => setUrl(u.target.value)}></InputPhoto>
-                        <label>Preço:</label><InputPrice type="number" value={price} onChange={(v) => setPrice(v.target.value)}></InputPrice>
+                        <Select options={categories} onChange={(s) => setCategory(s?.value)}
+                        />
+                        <label>Pergunta:</label><InputPhoto type="text" value={question} onChange={(u) => setQuestion(u.target.value)}></InputPhoto>
+                        <label>Resposta Correta:</label><InputName type="text" value={CAnswer} onChange={(e) => setCAnswer(e.target.value)}></InputName>
+                        <label>Resposta Errada:</label><InputPrice type="text" value={WAnswer} onChange={(v) => setWAnswer(v.target.value)}></InputPrice>
                         <SubmitButton type="submit">Enviar</SubmitButton>
                     </ProductForm>
                 </ProductCard>

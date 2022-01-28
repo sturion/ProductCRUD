@@ -1,10 +1,12 @@
 import React from "react";
 import { Route, BrowserRouter, Switch } from "react-router-dom";
 
-import Home from "../pages/home";
+import Dev from "../pages/dev";
 import Login from "../pages/login";
 import Produtos from "../pages/produtos";
 import Lista from "../pages/listItems/repeat";
+import Home from "../pages/home";
+import Hub from "../pages/hub";
 
 
 const Routes = () => {
@@ -18,6 +20,8 @@ const Routes = () => {
         <Route component={Login} path="/login" />
         <Route component={Produtos} path="/produtos" />
         <Route component={Lista} path="/listItems" />
+        <Route component={Dev} path="/dev" />
+        <Route component={Hub} path="/hub" />
       </Switch>
       </div>
       <div className="FooterRoute">

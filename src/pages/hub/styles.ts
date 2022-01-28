@@ -1,48 +1,56 @@
 import styled from "styled-components";
 
 export const CardContainer = styled.div`
-display: inline-block;
-flex-wrap: wrap;
-justify-content: center;
-align-items: center;`;
+    max-height: 100vh;
+    max-width: 100vw;
+`
+    ;
 
-export const Cards = styled.div`
-margin: 10px;
-width: 80vw;
-height: 80vw;
-max-width: 250px;
-max-height: 350px;
-display: flex;
-background-color: #E6E6E6;
-flex-direction: column;
-justify-content: space-between;
-align-items: center;
-border-radius: 10px;
-box-shadow: 0px 0px 10px 3px grey;
+export const Cards = styled.button`
+    background-color: rgba(23, 31, 93, 0.7);
+    backdrop-filter: blur(5px);
+    box-shadow: 0px 0px 9px 2px rgba(255,255,255,0.75);
+    height:8vh;
+    width:15vw;
+    margin:5px;
+    position: relative;
+    z-index:1;
+    border:white solid;
+    border-radius: 10px;
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5em;
+    user-select: none;
 `;
 
 export const AllContainer = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: center;
+max-height: 100vh;
+margin-top:-200%;
+max-width: 100vw;
 align-items: center;`;
 
-export const UlCards = styled.ul`
+export const UlCards = styled.div`
     display: flex;
-    flex-direction: row;
-    flex-wrap:wrap;
-    align-items: center;
-    justify-content: center;
+    position: relative;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 60vh;
+    margin-left: -50%;
+    margin-top:-50%;
+    align-content: flex-start;
 `;
 export const ProductName = styled.div`
     display: flex;
-    flex-direction: row;
-    flex-wrap:wrap;
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    font-size: 1.8vw;
-    color: black;
+    font-size: 80%;
 `;
 export const ProductPhoto = styled.div`
     width: 14vw;

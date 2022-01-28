@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { getProducts, delProduct, attNameProduct, attPriceProduct, attUrlProduct } from 'firebase'
-import { FaTrash, FaEdit } from 'react-icons/fa';
-import { GiPriceTag } from 'react-icons/gi'
-import { MdInsertPhoto } from 'react-icons/md'
+import { getProducts} from 'firebase'
+import {AuthContext} from "../../../src/providers/auth";
 import {
   CardContainer,
   Cards,
@@ -10,41 +8,42 @@ import {
   UlCards,
   ProductName,
   ProductPhoto,
-  ProductPrice,
-  Tools,
-  Exclude,
-  NameEdit,
-  EditPrice,
-  PhotoEdit,
+  //ProductPrice,
   EditInput,
-  EditAll,
   EditBarDiv,
 } from "./styles";
+
+type provider = {
+  data:{
+    question: string, CAnswer:string,WAnswer:string,
+  }
+}
 
 const Repeticao = () => {
 
   var [name, setName] = useState("");
 
+  
+  const { user}:any = React.useContext(AuthContext);
+  const collection:any = user.name;
 
-
-  const [products, setProducts] = useState<any[]>([]);
+  const [products, setProducts] = useState<provider>({}as provider);
 
   useEffect(() => {
 
     const request = async () => {
 
-      const newProducts = await getProducts();
-      setProducts(newProducts)
+      const newProducts = await getProducts(collection);
+      let arrayNumber = newProducts.length;
+      let questionNumber=Math.floor(Math.random() * (arrayNumber - 0));
+      console.log(questionNumber)
+      setProducts(newProducts[questionNumber]);
+      console.log(newProducts[questionNumber]);
     }
     request();
 
 
-  }, [])
-
-  const replaceImgWithError = (e: any) => {
-    e.target.onerror = null;
-    e.target.src = 'https://safetyaustraliagroup.com.au/wp-content/uploads/2019/05/image-not-found.png';
-  };
+  }, [collection,user])
 
   return (
     <AllContainer>
@@ -54,23 +53,21 @@ const Repeticao = () => {
       <CardContainer>
         <UlCards>
 
-          {products?.map((product: any) => {
-            return (
+          
               <Cards>
-                <ProductName>{product.data.name}</ProductName>
-                <ProductPhoto src={product.data.fotoUrl} onError={replaceImgWithError} />
-                <ProductPrice>R${product.data.price}</ProductPrice>
-                <EditAll>
+                <ProductName>{products?.data?.question}</ProductName>
+                <ProductPhoto>{products?.data?.CAnswer}</ProductPhoto>
+                {//<ProductPrice>{products?.data?.WAnswer}</ProductPrice>
+                }
+                {/* <EditAll>
                   <Tools>
-                    <NameEdit onClick={() => attNameProduct(product.id, name)}><FaEdit color="white" size="2vh" /></NameEdit>
-                    <EditPrice onClick={() => attPriceProduct(product.id, parseFloat(name))}><GiPriceTag color="white" size="2vh" /></EditPrice>
-                    <PhotoEdit onClick={() => attUrlProduct(product.id, name)}><MdInsertPhoto color="white" size="2vh" /></PhotoEdit>
-                    <Exclude onClick={() => delProduct(product.id)}><FaTrash color="white" size="2vh" /></Exclude>
+                    <NameEdit onClick={() => attNameProduct(products.id, name)}><FaEdit color="white" size="2vh" /></NameEdit>
+                    <EditPrice onClick={() => attPriceProduct(products.id, parseFloat(name))}><GiPriceTag color="white" size="2vh" /></EditPrice>
+                    <PhotoEdit onClick={() => attUrlProduct(products.id, name)}><MdInsertPhoto color="white" size="2vh" /></PhotoEdit>
+                    <Exclude onClick={() => delProduct(products.id)}><FaTrash color="white" size="2vh" /></Exclude>
                   </Tools>
-                </EditAll>
+                </EditAll> */}
               </Cards>
-            )
-          })}
         </UlCards>
 
       </CardContainer>
